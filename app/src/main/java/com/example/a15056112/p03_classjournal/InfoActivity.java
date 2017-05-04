@@ -27,6 +27,7 @@ public class InfoActivity extends AppCompatActivity {
 
         btnRP = (Button) findViewById(R.id.btnInfo);
         lv = (ListView) this.findViewById(R.id.lvDG);
+        info = new ArrayList<>();
         aa = new InfoAdaptor(this, R.layout.row, info);
         lv.setAdapter(aa);
 
