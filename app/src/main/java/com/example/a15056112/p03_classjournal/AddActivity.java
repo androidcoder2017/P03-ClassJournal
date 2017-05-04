@@ -28,7 +28,7 @@ public class AddActivity extends AppCompatActivity {
         Intent i = getIntent();
         int info = (int) i.getSerializableExtra("add");
 
-        tvWeeks.setText("week " + info);
+        tvWeeks.setText("Week " + info);
 
         btnSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
