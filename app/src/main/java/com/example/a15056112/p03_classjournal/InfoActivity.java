@@ -24,7 +24,7 @@ public class InfoActivity extends AppCompatActivity {
                 // Intent to display data
                 Intent rpIntent = new Intent(Intent.ACTION_VIEW);
                 // Set the URL to be used.
-                rpIntent.setData(Uri.parse("http://www.rp.edu.sg"));
+                rpIntent.setData(Uri.parse("http://www.rp.edu.sg/Diploma_in_Mobile_Software_Development_(R47).aspx"));
                 startActivity(rpIntent);
             }
         });
