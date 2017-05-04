@@ -20,6 +20,7 @@ public class Information implements Serializable{
     }
 
     public String getGrade() {
+
         return grade;
     }
 }
