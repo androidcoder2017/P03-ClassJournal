@@ -16,23 +16,19 @@ public class AddActivity extends AppCompatActivity {
 
     TextView tvWeeks;
     RadioGroup rg;
-    ImageView iv;
     Button btnSubmit;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add);
-
-        Intent i = getIntent();
-
-        final Information info = (Information) i.getSerializableExtra("add");
-
         tvWeeks = (TextView)findViewById(R.id.textViewWeeks);
-
-        iv = (ImageView) findViewById(R.id.imageView);
         btnSubmit = (Button)findViewById(R.id.buttonSubmit);
 
-        tvWeeks.setText(info.getWeek());
+        Intent i = getIntent();
+        int info = (int) i.getSerializableExtra("add");
+
+        tvWeeks.setText("week " + info);
 
         btnSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -41,12 +37,14 @@ public class AddActivity extends AppCompatActivity {
                 int selected = rg.getCheckedRadioButtonId();
                 RadioButton rb = (RadioButton) findViewById(selected);
 
-                rb.setText(info.getGrade());
-
                 String grade = rb.getText().toString();
 
+                Intent i = new Intent();
+                i.putExtra("grade", grade);
+                i.putExtra("week", tvWeeks.getText().toString());
 
-
+                setResult(RESULT_OK, i);
+                finish();
 
             }
         });

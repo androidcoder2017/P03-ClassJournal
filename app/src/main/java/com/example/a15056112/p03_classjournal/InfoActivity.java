@@ -67,11 +67,12 @@ public class InfoActivity extends AppCompatActivity {
         if(resultCode == RESULT_OK){
             if (data != null) {
                 // Get data passed back from 2nd activity
-                String like = data.getStringExtra("grade");
-                String statement = "";
+                String grade = data.getStringExtra("grade");
+                String week = data.getStringExtra("week");
 
                 if(requestCode == requestCodes){
-                    statement = " ";
+                    info.add(new Information(week, grade));
+                    aa.notifyDataSetChanged();
                 }
 
 
