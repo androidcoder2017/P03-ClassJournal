@@ -16,6 +16,7 @@ public class Information implements Serializable{
     }
 
     public String getWeek() {
+
         return week;
     }
 
