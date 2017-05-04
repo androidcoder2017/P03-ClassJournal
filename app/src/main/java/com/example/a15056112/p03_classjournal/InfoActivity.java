@@ -9,12 +9,15 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
 public class InfoActivity extends AppCompatActivity {
-
+    int requestCodes = 1;
     Button btnRP;
+    Button btnAdd;
+    Button btnEmail;
 
     ListView lv;
     ArrayAdapter aa;
@@ -26,6 +29,9 @@ public class InfoActivity extends AppCompatActivity {
         setContentView(R.layout.activity_info);
 
         btnRP = (Button) findViewById(R.id.btnInfo);
+        btnAdd = (Button) findViewById(R.id.btnAdd);
+        btnEmail = (Button) findViewById(R.id.btnEmail);
+
         lv = (ListView) this.findViewById(R.id.lvDG);
         info = new ArrayList<>();
         aa = new InfoAdaptor(this, R.layout.row, info);
@@ -41,5 +47,37 @@ public class InfoActivity extends AppCompatActivity {
                 startActivity(rpIntent);
             }
         });
+
+        btnAdd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent addIntent = new Intent(getApplicationContext(),AddActivity.class);
+                addIntent.putExtra("add", info.size() + 1);
+                startActivityForResult(addIntent, requestCodes);
+            }
+        });
+
+
+
     }
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data){
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if(resultCode == RESULT_OK){
+            if (data != null) {
+                // Get data passed back from 2nd activity
+                String like = data.getStringExtra("grade");
+                String statement = "";
+
+                if(requestCode == requestCodes){
+                    statement = " ";
+                }
+
+
+
+            }
+        }
+    }
+
 }
