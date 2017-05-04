@@ -15,7 +15,7 @@ public class MainActivity extends AppCompatActivity {
 
     ListView lvMod;
     ArrayAdapter aa;
-    ArrayList<String> al;
+    ArrayList<Module> al;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,11 +24,12 @@ public class MainActivity extends AppCompatActivity {
 
         lvMod = (ListView) findViewById(R.id.lvMod);
 
-        al = new ArrayList<String>();
-        al.add("C347");
+        al = new ArrayList<>();
+        al.add(new Module("C346", "Android Programming"));
+        al.add(new Module("C347", "Android Programming II"));
 
 
-        aa = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, al);
+        aa = new MainAdaptor(this, R.layout.row_main, al);
         lvMod.setAdapter(aa);
 
         lvMod.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -37,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent i = new Intent(MainActivity.this,
                         InfoActivity.class);
-                i.putExtra("module", al.get(position));
+                i.putExtra("module", al.get(position).getCode());
                 startActivity(i);
             }
         });
