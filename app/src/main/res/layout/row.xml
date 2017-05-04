@@ -33,15 +33,15 @@
                 android:id="@+id/textViewDG"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@color/colorDG"
                 android:padding="5dp"
-                android:text="DG" />
+                android:text="DG"
+                android:textColor="@color/colorDG" />
 
             <TextView
                 android:id="@+id/tvGrade"
                 android:layout_width="match_parent"
-                android:paddingLeft="5dp"
                 android:layout_height="wrap_content"
+                android:paddingLeft="5dp"
                 android:text="TextView" />
         </LinearLayout>
 

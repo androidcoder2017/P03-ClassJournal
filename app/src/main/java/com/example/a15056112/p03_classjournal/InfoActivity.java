@@ -19,6 +19,7 @@ public class InfoActivity extends AppCompatActivity {
     Button btnAdd;
     Button btnEmail;
 
+
     ListView lv;
     ArrayAdapter aa;
     ArrayList<Information> info;
@@ -31,6 +32,8 @@ public class InfoActivity extends AppCompatActivity {
         btnRP = (Button) findViewById(R.id.btnInfo);
         btnAdd = (Button) findViewById(R.id.btnAdd);
         btnEmail = (Button) findViewById(R.id.btnEmail);
+
+
 
         lv = (ListView) this.findViewById(R.id.lvDG);
         info = new ArrayList<>();
@@ -79,6 +82,35 @@ public class InfoActivity extends AppCompatActivity {
 
             }
         }
+        btnEmail.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View arg0) {
+                // The action you want this intent to do;
+                // ACTION_SEND is used to indicate sending text
+                String message = "";
+                for (int i = 0; i < info.size(); i++){
+                    message += info.get(i).getWeek() + ": DG: " + info.get(i).getGrade() + "\n";
+                }
+                Intent email = new Intent(Intent.ACTION_SEND);
+                // Put essentials like email address, subject & body text
+                email.putExtra(Intent.EXTRA_EMAIL,
+                        new String[]{"jason_lim@rp.edu.sg"});
+                email.putExtra(Intent.EXTRA_SUBJECT,
+                        "Test Email from C347");
+                email.putExtra(Intent.EXTRA_TEXT,
+                        message);
+                // This MIME type indicates email
+                email.setType("message/rfc822");
+                // createChooser shows user a list of app that can handle
+                // this MIME type, which is, email
+                startActivity(Intent.createChooser(email,
+                        "Choose an Email client :"));
+
+
+            }
+        });
     }
+
+
 
 }
