@@ -40,6 +40,10 @@ public class InfoActivity extends AppCompatActivity {
         aa = new InfoAdaptor(this, R.layout.row, info);
         lv.setAdapter(aa);
 
+        Intent i = getIntent();
+        String title = i.getStringExtra("module");
+        setTitle("Info for " + title);
+
         btnRP.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View arg0) {
